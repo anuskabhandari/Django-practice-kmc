@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Styled Table</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    thead {
+      background: #007bff;
+      color: white;
+    }
+
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:hover {
+      background: #f1f7ff;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    th {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="table-container">
+    <a href = "/home/student_create"><button> Create Student</button></a>
+
+     {% comment %} this is best way to define urls {% endcomment %}
+   <a href="{% url 'create2' %}">  <button > Create Student 2 </button> </a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>SN</th>
+          <th>Name</th>
+          <th>Dob</th>
+          <th>Number</th>
+          <th> Active</th>
+          <th> Action</th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for i in student %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.dob}}</td>
+          <td>{{i.contact_number}}</td>
+          <td>{{i.is_active}}</td>
+           <td>
+            <a href="{% url 'update' i.id %}">  <button > Update</button> </a>
+            <a href="{% url 'delete' i.id %}">  <button > delete </button> </a>
+          </td>  
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
