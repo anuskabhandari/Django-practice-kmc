@@ -22,5 +22,7 @@ from home.views import home, home__json, landing_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include('home.urls'))
+    path('home/', include('home.urls')),
+    path('grade/', include('teacher.urls')),
+
 ]

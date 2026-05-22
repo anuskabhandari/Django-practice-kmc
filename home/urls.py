@@ -13,6 +13,6 @@ urlpatterns = [
     path('student_create2', student_create2,name="create2"),
     path('student_update/<int:id>', student_update, name="update"),
     path('student_delete/<int:id>', student_delete, name="delete"),
-
+  
 ]
 # first ma ko path ma empty rakhe beacuse from the core project home chalda diretly tyo khulxa not need home/home

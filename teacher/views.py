@@ -4,10 +4,9 @@ from django.shortcuts import render
 from teacher.models import Teacher
 
 # Create your views here.
-
 def teacher_list(request):
-    teacher = Teacher.objects.all()
-    context ={
-        "teacher" : teacher
+    data = Teacher.objects.all()
+    context = {
+        "teacher":data
     }
-    return render(request, 'home/index.html', context)
+    return render(request, 'teacher/index.html', context)
