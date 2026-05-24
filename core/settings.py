@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'teacher',
     'movie',
+    'user',
 ]
 
 MIDDLEWARE = [
