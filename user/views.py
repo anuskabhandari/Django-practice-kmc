@@ -24,6 +24,7 @@ def register(request):
 
 
 def login_user(request):
+    query_params = request.GET
     form = LoginForm()
     if request.method == "POST":
         form = LoginForm(data=request.POST)
@@ -35,6 +36,8 @@ def login_user(request):
             )
             if user is not None:
                 login(request,user)
+                if query_params.get('next'):
+                    return redirect(query_params['next'])
                 return redirect('/admin')
             print(user)
 

@@ -3,8 +3,12 @@ from django.shortcuts import redirect, render
 
 from teacher.forms import TeacherForm
 from teacher.models import Teacher
+from django.contrib.auth.decorators import login_required
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView , UpdateView
 
 # Create your views here.
+@login_required()
 def teacher_list(request):
     data = Teacher.objects.all()
     context = {
@@ -47,3 +51,24 @@ def teacher_update(request,id):
 def teacher_delete(request , id):
     teacher = Teacher.objects.filter(id=id).delete()
     return redirect('/teacher/teacher')
+
+
+# Class Based VIew
+class TeacherView(ListView):
+    model = Teacher
+    template_name = "teacher/index.html"
+    context_object_name = 'teacher'
+
+
+class TeacherCreate(CreateView):
+    model = Teacher
+    form_class = TeacherForm
+    template_name = "teacher/create.html"
+    success_url = '/grade/teacher'
+
+
+class TeacherUpdate(UpdateView):
+    model = Teacher
+    form_class = TeacherForm
+    template_name = "teacher/update.html"
+    success_url = '/grade/teacher'
