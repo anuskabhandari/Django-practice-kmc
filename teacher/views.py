@@ -36,14 +36,14 @@ def teacher_update(request,id):
         form =TeacherForm(data=request.POST, instance=teacher)
         if form.is_valid():
             form.save()
-            return redirect('/home/teacher_list')
+            return redirect('/teacher/teacher')
         else:
             print(form.errors)
     context = {
         "form":form
     }
-    return render(request, 'student/update.html', context)
+    return render(request, 'teacher/update.html', context)
 
-def student_delete(request , id):
-    student = Teacher.objects.filter(id=id).delete()
-    return redirect('/home/teacher_list')
+def teacher_delete(request , id):
+    teacher = Teacher.objects.filter(id=id).delete()
+    return redirect('/teacher/teacher')

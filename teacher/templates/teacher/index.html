@@ -25,6 +25,7 @@
           <th>Name</th>
           <th>Age</th>
           <th>Number</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -36,6 +37,10 @@
           <td>{{i.name}}</td>
           <td>{{i.age}}</td>
           <td>{{i.phone}}</td>
+           <td>
+            <a href="{% url 'update' i.id %}">  <button > Update</button> </a>
+            <a href="{% url 'delete' i.id %}">  <button > delete </button> </a>
+          </td> 
         </tr>
         {% endfor %}
 
